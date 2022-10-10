@@ -18,6 +18,10 @@ post = ""
 name = "About"
 url = "/about/"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -44,12 +48,12 @@ Twitter = "danielnoegel"
   typeit = false
 
 [params.search]
-    enable = false
+    enable = true
     type = "lunr"
     contentLength = 4000
     placeholder = ""
     maxResultLength = 10
-    snippetLength = 30
+    snippetLength = 60
     highlightTag = "em"
     absoluteURL = false
 
