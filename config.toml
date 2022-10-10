@@ -1,0 +1,71 @@
+baseURL = 'https://danielnoegel.de/'
+languageCode = "en"
+defaultContentLanguage = "en"
+languageName = "English"
+title = 'Daniel Nögel'
+theme = 'loveit'
+[menu]
+[[menu.main]]
+weight = 1
+identifier = "posts"
+post = ""
+name = "Posts"
+url = "/posts/"
+[[menu.main]]
+weight = 2
+identifier = "about"
+post = ""
+name = "About"
+url = "/about/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+[params]
+title = "Daniel Nögel"
+description = ""
+[params.social]
+GitHub = "https://github.com/dnoegel"
+Linkedin = "https://www.linkedin.com/in/daniel-n%C3%B6gel-b14a5bb2/"
+Twitter = "https://twitter.com/danielnoegel"
+
+[params.header]
+[params.header.title]
+  logo = ""
+  name = "Daniel Nögel"
+  # you can add extra information before the name (HTML format is supported), such as icons
+  pre = ""
+  # you can add extra information after the name (HTML format is supported), such as icons
+  post = ""
+  # whether to use typeit animation for title name
+  typeit = false
+
+[params.search]
+    enable = true
+    type = "lunr"
+    contentLength = 4000
+    placeholder = ""
+    maxResultLength = 10
+    snippetLength = 30
+    highlightTag = "em"
+    absoluteURL = false
+
+[params.search.algolia]
+index = "dn"
+appID = "DYI58TLHGN"
+searchKey = "615aa9ebbc30a16d60e2f6ce164a8e97"
+
+[params.app]
+title = "Daniel Nögel"
+
+[params.home]
+[params.home.profile]
+  enable = true
+  avatarURL = "https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4"
+  title = "Daniel Nögel"
+  subtitle = ""
+  typeit = false
+  social = true

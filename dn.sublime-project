@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": "content",
+		},
+		{
+			"path": "static",
+		},
+		{
+			"path": "themes"
+		},
+	],
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3976d5aa-8514-4740-bc99-fd60ed0e997b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/gh-pages.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.hugo_build.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dn.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CNAME" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/archetypes/default.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/about/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/drafts/2022-10-09-heizlastberechnung.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/content/posts/2022-10-09-sungrow.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dn.sublime-project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dn.sublime-workspace" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_gen/assets/scss/css/style.scss_d75fd08668b4bae707167bbce4d8ca46.content" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_gen/assets/scss/css/style.scss_d75fd08668b4bae707167bbce4d8ca46.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/CNAME" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/adapter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/blockly.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/config.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/jarvis-app.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/modbus-adapter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/register.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/registers-in-object-tab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/sungrow-app.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/modbus/winet-s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/loveit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/pixyll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/loveit/layouts/_default/baseof.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/loveit/layouts/_default/baseof.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/loveit/layouts/partials/head/meta.html" beforeDir="false" afterPath="$PROJECT_DIR$/themes/loveit/layouts/partials/head/meta.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FtpYKb9KdhhDLaLf7c8g8B7YVL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/daniel/Sites/dn",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/drafts" />
+      <recent name="$PROJECT_DIR$/content/posts" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3976d5aa-8514-4740-bc99-fd60ed0e997b" name="Changes" comment="" />
+      <created>1665321281083</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665321281083</updated>
+      <workItem from="1665321283734" duration="2027000" />
+      <workItem from="1665338363596" duration="11392000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
