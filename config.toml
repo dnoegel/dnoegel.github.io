@@ -1,22 +1,23 @@
-baseURL = 'https://danielnoegel.de/'
+baseURL = 'https://noegel.io/'
 languageCode = "en"
 defaultContentLanguage = "en"
 languageName = "English"
-title = 'Daniel Nögel'
+title = 'danielnoegel.de'
 theme = 'loveit'
+
 [menu]
-[[menu.main]]
-weight = 1
-identifier = "posts"
-post = ""
-name = "Posts"
-url = "/posts/"
-[[menu.main]]
-weight = 2
-identifier = "about"
-post = ""
-name = "About"
-url = "/about/"
+    [[menu.main]]
+    weight = 1
+    identifier = "posts"
+    post = ""
+    name = "Posts"
+    url = "/posts/"
+    [[menu.main]]
+    weight = 2
+    identifier = "about"
+    post = ""
+    name = "About"
+    url = "/about/"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -31,6 +32,7 @@ url = "/about/"
 [params]
 title = "Daniel Nögel"
 description = ""
+
 [params.social]
 GitHub = "dnoegel"
 Linkedin = "daniel-n%C3%B6gel-b14a5bb2/"
@@ -39,12 +41,13 @@ Twitter = "danielnoegel"
 [params.header]
 [params.header.title]
   logo = ""
-  name = "Daniel Nögel"
+  name = "danielnoegel.de"
   # you can add extra information before the name (HTML format is supported), such as icons
+  _pre = "<img style='height:32px;margin-right:10px;border-radius:32px;vertical-align:middle' src='https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4'"
   pre = ""
   # you can add extra information after the name (HTML format is supported), such as icons
   post = ""
-  # whether to use typeit animation for title name
+  # whether to use typeit a nimation for title name
   typeit = false
 
 [params.search]
@@ -56,11 +59,6 @@ Twitter = "danielnoegel"
     snippetLength = 60
     highlightTag = "em"
     absoluteURL = false
-
-[params.search.algolia]
-index = "dn"
-appID = "DYI58TLHGN"
-searchKey = "615aa9ebbc30a16d60e2f6ce164a8e97"
 
 [params.app]
 title = "Daniel Nögel"
