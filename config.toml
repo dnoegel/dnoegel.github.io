@@ -28,9 +28,9 @@ url = "/about/"
 title = "Daniel Nögel"
 description = ""
 [params.social]
-GitHub = "https://github.com/dnoegel"
-Linkedin = "https://www.linkedin.com/in/daniel-n%C3%B6gel-b14a5bb2/"
-Twitter = "https://twitter.com/danielnoegel"
+GitHub = "dnoegel"
+Linkedin = "daniel-n%C3%B6gel-b14a5bb2/"
+Twitter = "danielnoegel"
 
 [params.header]
 [params.header.title]
