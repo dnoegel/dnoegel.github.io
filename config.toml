@@ -65,7 +65,7 @@ title = "Daniel Nögel"
 [params.home.profile]
   enable = true
   avatarURL = "https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4"
-  title = "Daniel Nögel"
-  subtitle = ""
+  title = ""
+  subtitle = "There's always something new to learn!"
   typeit = false
   social = true
