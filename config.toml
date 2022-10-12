@@ -5,6 +5,11 @@ languageName = "English"
 title = 'danielnoegel.de'
 theme = 'loveit'
 
+
+[params]
+title = "Daniel Nögel"
+description = ""
+
 [menu]
     [[menu.main]]
     weight = 1
@@ -29,9 +34,7 @@ theme = 'loveit'
       unsafe = true
 
 
-[params]
-title = "Daniel Nögel"
-description = ""
+
 
 [params.social]
 GitHub = "dnoegel"
