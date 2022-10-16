@@ -23,6 +23,8 @@ Auf Basis der oben genannten Zugriffsdaten werden automatisiert Statistiken gene
 - Anteilige Nutzung nach Ländern
 - Die Statistiken erstrecken sich jeweils über 1 Jahr
 
+
+
 ### Kontakt bei Fragen
 Bei Fragen zum Datenschutz auf dieser Seite wenden Sie sich gerne an mich: fragen-zum-datenschutz@post.noegelmail.de
 

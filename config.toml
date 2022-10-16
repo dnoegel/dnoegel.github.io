@@ -2,13 +2,15 @@ baseURL = 'https://noegel.io/'
 languageCode = "en"
 defaultContentLanguage = "en"
 languageName = "English"
-title = 'danielnoegel.de'
+title = 'noegel.io'
 theme = 'loveit'
 
 
 [params]
 title = "Daniel Nögel"
 description = ""
+css = ["style.css"]
+
 
 [menu]
     [[menu.main]]
@@ -41,10 +43,13 @@ GitHub = "dnoegel"
 Linkedin = "daniel-n%C3%B6gel-b14a5bb2/"
 Twitter = "danielnoegel"
 
+
+
+
 [params.header]
 [params.header.title]
   logo = ""
-  name = "danielnoegel.de"
+  name = "noegel.io"
   # you can add extra information before the name (HTML format is supported), such as icons
   _pre = "<img style='height:32px;margin-right:10px;border-radius:32px;vertical-align:middle' src='https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4'"
   pre = ""
