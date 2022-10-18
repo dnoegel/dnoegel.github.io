@@ -1,9 +1,12 @@
 ---
-title: "Auf Irrwegen: Vom Versuch meinen Gaszähler automatisch auszulesen"
-date: 2022-10-16T19:21:00+02:00
+title: "Auf Irrwegen: Gaszähler automatisch auszulesen"
+date: 2022-10-18T20:46:00+02:00
 author: 'Daniel'
 language: de
-draft: true
+draft: false
+keywords: 'Aqara, Kontakt, QMC5883, HMC5883, Gaszähler, Arduino, ESP32, Reed, Hall, Sensor'
+description: "Gaszähler mit ESP32 und einem QMC5883 Sensor automatisch auslesen"
+
 ---
 Smart Home und der mitleidige Blick meiner Ehefrau, wenn ich ihr mal wieder eine Automatisierung oder eine neue Sensorüberwachung präsentiere: Diese beiden Sachen gehen Hand in Hand. Das war auch wieder bei diesem Projekt der Fall: Der automatischen Überwachung des Gaszählers.
 
@@ -97,3 +100,69 @@ So bekomme ich nun stündlich einen aktuellen Zählerstand via Telegram-Nachrich
 Eine Erkenntnis ist aber: Alte Handys lassen sich doch sehr gut als IP Webcam umfunktionieren: Bewegungserkennung, Zwei-Wege-Kommunikation, LED-Licht, Video, Automatische Aufnahmen… alles möglich.
 
 ## Versuch 3: Kompass
+Nachdem klar war, dass der Sensor des Aqara-Kontaktes nicht fein genug ist, um den Magneten zu registrieren, habe ich nach Alternativen geschaut. Die Optionen:
+
+- Reed-Kontakt
+- Hall-Sensor
+- Kompass/Magnetometer
+
+Nachdem ich mit dem Reed-Kontakt im Aqara-Sensor schon auf die Nase gefallen war, habe ich zunächst in Richtung Hall-Sensor überlegt. Auch hier finden sich aber unterschiedliche Berichte, welcher Sensor für diesen Zweck jetzt empflindlich genug ist. Zu guter Letzt habe ich aber ein Projekt gefunden, wo ein [Magnetometer HMC5883 mit Raspberry Pi](https://www.kompf.de/tech/gascountmag.html) die Aufgabe übernimmt. Die Überlegung, dass ein Sensor, der das Erdmagnetfelt detektieren kann, auch den Magneten im Gaszähler detektieren können sollte, fand ich plausibel.  
+
+<figure style="font-size:small;width:500px;margin:auto">
+  <img src="/images/gaszaehler/soldering.jpeg" style="">
+  <figcaption>Der Sensor QMC5883 wird mit Stifleisten versehen</figcaption>
+</figure>
+
+Nachdem ich den ersten Sensor beim Anlöten der Stiftleisten frittiert hatte und die Ersatzlieferung eingetroffen war, konnte das Projekt umgesetzt werden.
+
+Material:
+
+- ESP32 Microprozessor
+- QMC5833 Kompass
+- Breadboard
+- Jumperkabel
+
+Werkzeug:
+- Lötkolben
+
+Die Idee: Der ESP32 wählt sich ins Wifi ein und übermittelt die Impulse via MQTT an meine Iobroker-Instanz, wo bei jedem Impuls der Zählerstand um 0,1m³ erhöht wird.
+
+<figure style="font-size:small;width:640px;margin:auto">
+<video width="640" height="360" controls>
+  <source src="/images/gaszaehler/GasMeter.mp4" type="video/mp4">
+</video>  <figcaption>Springt die zweite Nachkommastelle von 6 auf 7 (rechts im Video), erkennt der Kompass einen starken Ausschlag (links im Video). So lassen sich wiederum Inkremente der ersten Nachkommastelle detektieren</figcaption>
+</figure>
+
+Das Sketch dafür ist relativ simpel: Im Wesentlichen werden 10 Sekunden lang Messwerte des Magnetfeldes gesammelt. Da der Sensor relativ empfindlich ist und die Werte bei Erkennung des Magneten überlaufen können, wird die Signalstärke auf 4000 beschränkt. Nach 10 Sekunden wird geprüft, ob der aktuelle Durchschnittswert von vorher über 2000 auf unter 2000 gefallen ist. Ist dies der Fall, wurde eine Rotation erkannt und das Ganze via MQTT publiziert.
+
+
+```c
+
+void loop()
+{
+  loopMqtt();
+  
+  sVector_t mag = compass.readRaw();
+
+  // calculate field strength & store for average calculation
+  fieldStrength = sqrt(mag.XAxis ^ 2 + mag.YAxis ^ 2 + mag.ZAxis ^ 2);
+  avg = avgFieldStrength.reading(fieldStrength > 4000 ? 4000 : fieldStrength);
+    
+  // every 10 seconds: evaluate if signall falls from high (magnet detected) to low (no magnet)
+  if ((unsigned long)(millis() - timer) > 10000) {    
+    // if signal falls from over 2000 to under 2000 in the average of the last 10 seconds: 
+    // trigger "tick" via MQTT => 0.1m3 of gas have been consumed
+    if (avg < 2000 and lastAvg >= 2000) {
+      client.publish("mqtt.0.gas_meter.tick", itoa(millis(), charBuf, 10));
+    }
+    timer = millis();
+    lastAvg = avg;
+  }
+
+  loopWebUpdater();
+  delay(500);
+}
+```
+Das [komplette Skript findet sich auf Github](https://github.com/dnoegel/gasmeter-sensor). 
+
+
