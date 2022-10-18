@@ -165,4 +165,10 @@ void loop()
 ```
 Das [komplette Skript findet sich auf Github](https://github.com/dnoegel/gasmeter-sensor). 
 
+## Fazit
+Insgesamt bin ich ziemlich zufrieden mit dem Ergebnis: Zumindest gibt es nach einem Tag noch keine Abweichung, der erfasste Zählerstand entspricht (bis auf die erste Nachkommastelle) genau dem tatsächlichen Zählerstand. Und via Iobroker/Jarvis kann ich den Tagesverbauch auch sehr leicht graphisch visualisieren lassen.
 
+<figure style="font-size:small;width:100%;margin:auto">
+  <img src="/images/gaszaehler/graph.png" style="">
+  <figcaption>Nach 24 Stunden hat der Sensor alle 16 Ticks korrekt erfasst</figcaption>
+</figure>
