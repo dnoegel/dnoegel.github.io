@@ -133,33 +133,38 @@ Die Idee: Der ESP32 wählt sich ins Wifi ein und übermittelt die Impulse via MQ
 </video>  <figcaption>Springt die zweite Nachkommastelle von 6 auf 7 (rechts im Video), erkennt der Kompass einen starken Ausschlag (links im Video). So lassen sich wiederum Inkremente der ersten Nachkommastelle detektieren</figcaption>
 </figure>
 
-Das Sketch dafür ist relativ simpel: Im Wesentlichen werden 10 Sekunden lang Messwerte des Magnetfeldes gesammelt. Da der Sensor relativ empfindlich ist und die Werte bei Erkennung des Magneten überlaufen können, wird die Signalstärke auf 4000 beschränkt. Nach 10 Sekunden wird geprüft, ob der aktuelle Durchschnittswert von vorher über 2000 auf unter 2000 gefallen ist. Ist dies der Fall, wurde eine Rotation erkannt und das Ganze via MQTT publiziert.
+Das Sketch dafür ist relativ simpel: Im Wesentlichen werden 10 Sekunden lang Messwerte des Magnetfeldes gesammelt. Da der Sensor relativ empfindlich ist und die Werte bei Erkennung des Magneten überlaufen können, wird die Signalstärke auf 4000 beschränkt. Ist der Durchschnittswert der letzten 10 Sekunden > 2000, wird das `high` Flag gesetzt. Ist der Durchschnittswert der letzten 10 Sekunden kleiner 300 und das High-Flag ist gesetzt, wurde eine Rotation erkannt, das `high` Flag wird entfernt und das Ganze via MQTT publiziert. Die Erkennung basiert also auf Anstieg und anschließendem Fall der gemessenen Feldstärke. Dieses Vorgehen erscheint mir relativ robust, weil es wenig Fehlauslösungen gibt - selbst wenn der Magnet längere Zeit direkt unter dem Sensor stehen bleibt. Das wäre anders, wenn der Trigger für `high` und der Trigger für `low` identisch wären - bei ungünstiger Positionierung des Magneten könnte der Sensor zwischen den Auslösewerten hin- und herspringen.
 
 
 ```c
 
+
 void loop()
 {
   loopMqtt();
-  
+
   sVector_t mag = compass.readRaw();
 
   // calculate field strength & store for average calculation
   fieldStrength = sqrt(mag.XAxis ^ 2 + mag.YAxis ^ 2 + mag.ZAxis ^ 2);
   avg = avgFieldStrength.reading(fieldStrength > 4000 ? 4000 : fieldStrength);
-    
+  
+  Serial.print("Arrow: "); Serial.println(fieldStrength);  
+
   // every 10 seconds: evaluate if signall falls from high (magnet detected) to low (no magnet)
-  if ((unsigned long)(millis() - timer) > 10000) {    
-    // if signal falls from over 2000 to under 2000 in the average of the last 10 seconds: 
-    // trigger "tick" via MQTT => 0.1m3 of gas have been consumed
-    if (avg < 2000 and lastAvg >= 2000) {
+  if ((unsigned long)(millis() - timer) > 10000) {
+    if (avg < 300 and isHigh) {
+      isHigh = false;
       client.publish("mqtt.0.gas_meter.tick", itoa(millis(), charBuf, 10));
     }
+    
+    if (avg > 2000) {
+      isHigh = true;
+    }
+
     timer = millis();
-    lastAvg = avg;
   }
 
-  loopWebUpdater();
   delay(500);
 }
 ```
