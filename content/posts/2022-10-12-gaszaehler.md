@@ -133,7 +133,22 @@ Die Idee: Der ESP32 wählt sich ins Wifi ein und übermittelt die Impulse via MQ
 </video>  <figcaption>Springt die zweite Nachkommastelle von 6 auf 7 (rechts im Video), erkennt der Kompass einen starken Ausschlag (links im Video). So lassen sich wiederum Inkremente der ersten Nachkommastelle detektieren</figcaption>
 </figure>
 
-Das Sketch dafür ist relativ simpel: Im Wesentlichen werden 10 Sekunden lang Messwerte des Magnetfeldes gesammelt. Da der Sensor relativ empfindlich ist und die Werte bei Erkennung des Magneten überlaufen können, wird die Signalstärke auf 4000 beschränkt. Ist der Durchschnittswert der letzten 10 Sekunden > 2000, wird das `high` Flag gesetzt. Ist der Durchschnittswert der letzten 10 Sekunden kleiner 300 und das High-Flag ist gesetzt, wurde eine Rotation erkannt, das `high` Flag wird entfernt und das Ganze via MQTT publiziert. Die Erkennung basiert also auf Anstieg und anschließendem Fall der gemessenen Feldstärke. Dieses Vorgehen erscheint mir relativ robust, weil es wenig Fehlauslösungen gibt - selbst wenn der Magnet längere Zeit direkt unter dem Sensor stehen bleibt. Das wäre anders, wenn der Trigger für `high` und der Trigger für `low` identisch wären - bei ungünstiger Positionierung des Magneten könnte der Sensor zwischen den Auslösewerten hin- und herspringen.
+Nachdem die grundlegende Funktionsweise sichergestellt wurde (etwas Malerkrepp hält den Sensor an Ort und Stelle), habe ich noch einen kleinen Halter 3d-gedruckt, dessen Modell auf Thingiverse abrufbar ist: https://www.thingiverse.com/thing:5581975 
+
+<figure style="font-size:small;width:500px;margin:auto">
+  <img src="/images/gaszaehler/result.jpeg" style="">
+  <figcaption>Mittels eines 3d-gedruckten Halters wird der Sensor genau über die zweite Nachkommastelle der Segmentanzeige positioniert.
+</figcaption>
+</figure>
+
+<figure style="font-size:small;width:640px;margin:auto">
+<video width="500" controls>
+  <source src="/images/gaszaehler/3dmodel.mov" type="video/mp4">
+</video>  <figcaption>Das Modell in der Rundumansicht</figcaption>
+</figure>
+
+
+Das Sketch für das Projekt ist relativ simpel: Im Wesentlichen werden 10 Sekunden lang Messwerte des Magnetfeldes gesammelt. Da der Sensor relativ empfindlich ist und die Werte bei Erkennung des Magneten überlaufen können, wird die Signalstärke auf 4000 beschränkt. Ist der Durchschnittswert der letzten 10 Sekunden > 2000, wird das `high` Flag gesetzt. Ist der Durchschnittswert der letzten 10 Sekunden kleiner 300 und das High-Flag ist gesetzt, wurde eine Rotation erkannt, das `high` Flag wird entfernt und das Ganze via MQTT publiziert. Die Erkennung basiert also auf Anstieg und anschließendem Fall der gemessenen Feldstärke. Dieses Vorgehen erscheint mir relativ robust, weil es wenig Fehlauslösungen gibt - selbst wenn der Magnet längere Zeit direkt unter dem Sensor stehen bleibt. Das wäre anders, wenn der Trigger für `high` und der Trigger für `low` identisch wären - bei ungünstiger Positionierung des Magneten könnte der Sensor zwischen den Auslösewerten hin- und herspringen.
 
 
 ```c
@@ -169,6 +184,7 @@ void loop()
 }
 ```
 Das [komplette Skript findet sich auf Github](https://github.com/dnoegel/gasmeter-sensor). 
+
 
 ## Fazit
 Insgesamt bin ich ziemlich zufrieden mit dem Ergebnis: Zumindest gibt es nach einem Tag noch keine Abweichung, der erfasste Zählerstand entspricht (bis auf die erste Nachkommastelle) genau dem tatsächlichen Zählerstand. Und via Iobroker/Jarvis kann ich den Tagesverbauch auch sehr leicht graphisch visualisieren lassen.
