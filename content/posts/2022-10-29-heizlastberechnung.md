@@ -1,10 +1,9 @@
 ---
 title: "Heizlastberechnung - Teil 1: Heizlast eines Raumes und Hauses ermitteln"
-date: 2022-10-09T16:36:27+02:00
+date: 2022-10-29T10:00:00+02:00
 author: 'Daniel'
 language: de
-draft: true
-next: "2022-10-12-uwert-ermitteln.md"
+next: "2022-10-29-uwert-ermitteln.md"
 ---
 Energiekrise, Heizkostenentwicklung, Nachhaltigkeit: (Nicht nur) wer einen Altbau hat wird sich dieser Tage intensiv mit der Frage beschäftigen, wo man den Heizenergiebedarf des Hauses weiter optimieren kann und ob beispielsweise eine Wärmepumpe in Frage kommt. Mit einer sogenannten Heizlastberechnung ist es möglich, ein Modell des Heizenergiebedarfes eines Hauses zu entwickeln und zu verstehen, ob sich die vorhandenen Heizkörper beispielsweise für eine Wärmepumpe eignen. In meinem konkreten Fall lautet die Frage daher:
 
@@ -15,8 +14,8 @@ Im Laufe dieser Reihe soll diese Frage beantwortet werden; wir beginnen hier mit
 ## Worum geht es?
 Hier wird eine Heizlastberechnung anhand eines 23m² großen Raumes durchgeführt - und am Ende die Gesamtheizlast des Hausesauf Basis der Heizlasten weiterer Räume berechnet. Mit dem Ergebnis kann bspw. die Auslegung eines Heizkessels überschlägig berechnen - oder abschätzen ob der 3kW Heizkörper im Wohnzimmer auch bei Vorlauftemperaturen von 55°C oder gar 45°C noch ausreichend Leistung hat um den Raum zu erwärmen. Gerade letzteres ist oft kritisch um abzuschätzen, ob eine Wärmepumpe bspw. rentabel ist. 
 
-<figure>
-  <img src="/images/heizlast/heizung-vorlauf-prognose.png" style="width:500px">
+<figure style="width:500px;margin:auto">
+  <img src="/images/heizlast/heizung-vorlauf-prognose.png" style="">
   <figcaption style="font-size:small;">
 Im Rahmen dieser Reihe werden wir die Heizlast einzelner Räume berechnen, die Leistung von Heizkörpern ermitteln und diese Leistung 
 für geringere Vorlauftemperaturen umrechen. Im Bild zu sehen: In fast allen Räumen ist die Leistung auch bei einer Vorlauftemperatur von 55°C 
@@ -26,15 +25,15 @@ ausreichend - und in fast keinem Raum bei einer Vorlauftemperatur von 45°C.
 
 
 Da dies eine mehrteilige Reihe ist empfehle ich auch folgende Lektüre:
-- [**Heizlastberechnung - Teil 1: Heizlast eines Raumes und Hauses ermitteln**](/posts/2022-10-09-heizlastberechnung)
-- [Heizlastberechnung - Teil 2: U-Wert von Bauteilen ermitteln](/posts/2022-10-12-uwert-ermitteln)
-- [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts//2022-10-13-heizung)
+- [**Heizlastberechnung - Teil 1: Heizlast eines Raumes und Hauses ermitteln**](/posts/2022-10-29-heizlastberechnung)
+- [Heizlastberechnung - Teil 2: U-Wert von Bauteilen ermitteln](/posts/2022-10-29-uwert-ermitteln)
+- [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts//2022-10-29-heizung)
 
 
 ## Ein Wort vorab
 Ich bin nicht vom Fach - alle Angaben sind falsch ;-). Mein Ziel ist es nicht, eine 100% akurate Ermittlung der Heizlast meines Hauses vorzunehmen (die Heizlastberechnung an sich ist ja schon nur ein Modell): Sondern die grundlegenden Konzepte soweit verinnertlicht zu haben, dass ich näherungsweise verstehen kann, wie sich bspw. die Dämmung der ob ersten Geschossdecke auf meinen Heizwärmebedarf auswirkt.
 
-Was wir hier machen ist nach meinem Verständnis eine Interpretation der Norm _DIN EN 12831-1: 
+Was wir hier machen ist nach meinem Verständnis eine Interpretation der Norm DIN EN 12831-1: 
 > Energetische Bewertung von Gebäuden - Verfahren zur Berechnung der Norm-Heizlast - Teil 1: Raumheizlast.
 > 
 Die Norm liegt mir nicht vor, und das Netz ist voller veralteter, falsch abgeschriebener und unvollständiger Informationen dazu, die ich nach besten Wissen und Gewissen neu arrangiere.
@@ -60,7 +59,7 @@ Die Heizlast eines Raumes ist die Summe folgender Wärmeverluste:
 Durch die Erhebung dieser Informationen und Aufsummierung aller Räume können wir die Heizlast für das gesamte Haus berechnen.
 
 ## Heizlastberechnung
-Im Folgenden berechnen wir die Heizlast für einen 23m2 großen Beispielraum.
+Im Folgenden berechnen wir die Heizlast für einen 23m² großen Beispielraum.
 
 ### Transmissionswärmeverluste
 
@@ -70,20 +69,20 @@ Die Heizlast für alle genannten Bauteille wird dabei wie folgt berechnet:
 
 `Fläche des Bauchteils * Wärmedurchgangskoeffizient * Temperaturdifferenz` 
 
-Der **Wärmedurchgangskoeffizient** ist der oft zitierte U-Wert. Er gibt an, wieviel Watt Wärmeleistung je Quadratmeter und Grad Kelvin bspw. draußen verloren geht. Einige Möglichkeiten an diesen U-Wert zu gelangen sind in [Heizlastberechnung - Teil 2: U-Wert ermitteln](/posts/2022-10-12-uwert-ermitteln) aufgeführt.
+Der **Wärmedurchgangskoeffizient** ist der oft zitierte U-Wert. Er gibt an, wieviel Watt Wärmeleistung je Quadratmeter und Grad Kelvin bspw. draußen verloren geht. Einige Möglichkeiten an diesen U-Wert zu gelangen sind in [Heizlastberechnung - Teil 2: U-Wert ermitteln](/posts/2022-10-29-uwert-ermitteln) aufgeführt.
 
 
 Die **Temperaturdifferenz** ist hierbei die Temperaturdifferenz zwischen dem betrachteten Raum (bspw. 21°C im Wohnzimmer) und dem angrenzenden Bereich (etwa 17°C im Schlafzimmer). Achtung: Für den Außenbereich wird die sogenannte [Normauslegungstemperatur](https://www.haustechnikverstehen.de/glossary/normaussentemperatur/) betrachtet. Diese lässt sich auf verschiedenen Webseiten nachschlagen, bspw. auf der [Klimakarte des Bundesverbandes Wärmepumpe e.V](https://www.waermepumpe.de/normen-technik/klimakarte/). Bei mir liegt die Normauslegungstemperatur -9°C. Im Wohnzimmer heize ich auf 21°C - die Temperaturdiffernz liegt damit bei 30°K. 
 
-Ein Beispiel: 6,58m2 Fensterfläche mit einem U-Wert von 1,9 W/(m2*K) bei einer Temperaturdifferenz von 30°K:
+Ein Beispiel: 6,58m² Fensterfläche mit einem U-Wert von 1,9 W/(m²*K) bei einer Temperaturdifferenz von 30°K:
 
-`6,58m2 * 1,9 W/(m2*K) * 30K = 375,06 W`
+`6,58m² * 1,9 W/(m²*K) * 30K = 375,06 W`
 
 Der Temperaturverlust der Fensterfläche beträgt also 375,06 Watt. 
 
-Wollen wir die Transmissionswärmeverluste für unseren 23m2 großen Beispielraum berechnen, müssen natürlich noch Decke, Boden, Tür zum Flur etc. betrachtet werden. Dies könnte bspw. wie folgt aussehen:
+Wollen wir die Transmissionswärmeverluste für unseren 23m² großen Beispielraum berechnen, müssen natürlich noch Decke, Boden, Tür zum Flur etc. betrachtet werden. Dies könnte bspw. wie folgt aussehen:
 
-Bauteil        | Fläche (m2) | U-Wert (W/m2*K) |  Temperatur-Differenz (°K) | Verlust (W) |
+Bauteil        | Fläche (m²) | U-Wert (W/m²*K) |  Temperatur-Differenz (°K) | Verlust (W) |
 -------------- |------------:|----------------:|---------------------------:|------------:|
 Fenster        |        6,58 |             1,9 |                         30 |      375,06 | 
 Außenwand      |         1,5 |            0,24 |                         30 |        10,8 | 
@@ -98,7 +97,7 @@ Die Transmissionswärmeverluste des Beispielraumes betragen in Summe also rund *
 ### Lüftungswärmeverluste
 Für ein gesundes Raumklima muss gelüftet werden, entweder händisch oder durch automatische Lüftungsanlagen. Durch den Austausch der aufgeheizten, nassen Luft gegen kalte Luft sinkt die Luftfeuchtigkeit. Es wird aber auch Wärmenergie abgegeben.
 
-Zur Berechnung stellt sich zunächst die Frage, wie oft die Raumluft je Stunde ausgetauscht wird (die sogenannte Luftwechselrate): Eine Luftwechselrate von 1 h^-1 bedeutet, dass das gesamte Raumvolumen einmal je Stunde ausgetauscht wird. Im Falle eines 23m2 großen Raumes mit 2,55m Deckenhöhe also `23 * 2,55 * 1h^-1 = 58,65m³/h` Luft. Es gibt für unterschiedliche Räume unterschiedliche Angaben zu angestrebten Luftwechselramen - ein Badezimmer oder eine Küche wird man wegen der hohen Luftfeuchtigkeit sicher öfter/länger lüften als ein Wohnzimmer. Zumindest für Standard-Räume scheint aber häufig eine Luftwechselrate von 0,5 h^-1 angenommen zu werden: Im Schnitt wird dann das Raumvolumen an Luft alle zwei Stunden ausgetauscht. Für unsere Rechnung ergibt sich damit ein Volumenstrom von **29,325m³/h**: `23m2 * 2,55m * 0,5h^-1 = 29,325m³/h`.
+Zur Berechnung stellt sich zunächst die Frage, wie oft die Raumluft je Stunde ausgetauscht wird (die sogenannte Luftwechselrate): Eine Luftwechselrate von 1 h^-1 bedeutet, dass das gesamte Raumvolumen einmal je Stunde ausgetauscht wird. Im Falle eines 23m² großen Raumes mit 2,55m Deckenhöhe also `23 * 2,55 * 1h^-1 = 58,65m³/h` Luft. Es gibt für unterschiedliche Räume unterschiedliche Angaben zu angestrebten Luftwechselramen - ein Badezimmer oder eine Küche wird man wegen der hohen Luftfeuchtigkeit sicher öfter/länger lüften als ein Wohnzimmer. Zumindest für Standard-Räume scheint aber häufig eine Luftwechselrate von 0,5 h^-1 angenommen zu werden: Im Schnitt wird dann das Raumvolumen an Luft alle zwei Stunden ausgetauscht. Für unsere Rechnung ergibt sich damit ein Volumenstrom von **29,325m³/h**: `23m² * 2,55m * 0,5h^-1 = 29,325m³/h`.
 
 Um nun die Lüftungswärmeverluste zu berechnen, multiplizieren wir den berechneten Volumenstrom mit der spezifischen Wärmekapazität von Luft (0,34 Wh/(m³*K)) und der Temperaturdifferenz:
 
@@ -203,4 +202,4 @@ Den ersten Teil der Frage können wir bereits beantworten, durch die Heizlastber
    - …alle Fenster gegen dreifachverglaste austausche? => In der Berechnung der Transmissionswärmeverluste den U-Wert aller Fenster auf 0,9W/(m²*K) setzen. 
    - …die oberste Geschossdecke dämme? => In der Berechnung der Transmissionswärmeverluste den U-Wert für das Dach auf 0,14W/(m²*K) setzen.
 
-Für den zweiten Teil der Frage möchte ich noch herausfinden, ob die einzelnen Heizkörper ausreichend groß bemessen sind. Mehr dazu in [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts//2022-10-13-heizung)
+Für den zweiten Teil der Frage möchte ich noch herausfinden, ob die einzelnen Heizkörper ausreichend groß bemessen sind. Mehr dazu in [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts//2022-10-29-heizung)

@@ -1,11 +1,10 @@
 ---
 title: "Heizlastberechnung - Teil 2: U-Wert von Bauteilen ermittelnn"
-date: 2022-10-12T19:55:27+02:00
+date: 2022-10-29T10:05:00+02:00
 author: 'Daniel'
 language: de
-draft: true
-prev: "2022-10-09-heizlastberechnung.md"
-next: "2022-10-13-heizung.md"
+prev: "2022-10-29-heizlastberechnung.md"
+next: "2022-10-29-heizung.md"
 ---
 
 Geht es ums Haus stolpert man immer wieder über den U-Wert: Sätze wie _nach EnEV brauchste 'nen U-Wert von 0,24 aber für KfW müssen es schon 0,2 sein_ gehören zu den Standardsätzen des stolzen Altbaubesitzers. Hier betrachte ich kurz, was es mit dem U-Wert auf sich hat, wo man relevante Informationen für sein Haus findet - und wie man die Auswirkung einer Dämmung auf den U-Wert seines Hauses berechnen kann.
@@ -14,9 +13,9 @@ Geht es ums Haus stolpert man immer wieder über den U-Wert: Sätze wie _nach En
 
 ## Mehr zu dieser Reihe
 In diesem zweiten Teil meiner Reihe "_Heizlastberechnung_" geht es um einige Infos rund um den U-Wert. Wer sich generell für das Thema _Heizlastberechnung_ interessiert, kann einen Blick auf die anderen Teile werfen.
-- [Heizlastberechnung - Teil 1: Heizlast eines Raumes und Hauses ermitteln](/posts/2022-10-09-heizlastberechnung)
-- [**Heizlastberechnung - Teil 2: U-Wert ermitteln**](/posts/2022-10-12-uwert-ermitteln)
-- [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts/2022-10-13-heizung)
+- [Heizlastberechnung - Teil 1: Heizlast eines Raumes und Hauses ermitteln](/posts/2022-10-29-heizlastberechnung)
+- [**Heizlastberechnung - Teil 2: U-Wert ermitteln**](/posts/2022-10-29-uwert-ermitteln)
+- [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts/2022-10-29-heizung)
 
 ## Was ist der U-Wert?
 Der U-Wert wird auch *Wärmedurchgangskoeffizient* genannt. Er beschreibt, wieviel Wärme durch ein Bauteil dringen kann - also beispielsweise vom Wohnzimmer durch die Mauer nach draußen. Der U-Wert gibt an, wieviel Wärme in Watt pro Quadratmeter entweicht - und zwar bei einem Temperaturunterschied von einem Grad Kelvin. Entsprechend wird der U-Wert in W/(m²*K) angegeben - gesprochen "Watt pro Quadratmeter und pro Kelvin".
@@ -26,9 +25,9 @@ Je kleiner der U-Wert, desto weniger Wärme gelangt nach außen - desto geringer
 Dem U-Wert kommt eine kritische Bedeutung bei der Heizlast eines Gebäudes zu: Ein ungedämmtes Dach mit dem U-Wert 2 W/(m²*K) führt bei einem 100m² großen Haus und einer Norm-Auslegungstemperatur von -9°C zu **Transmissionswärmeverlusten von 6.000 Watt**. Bei 2100 Heizstunden lassen sich so überschlägig 12kW Heizenergie darauf zurückführen - je nach Kosten je kWh also 1200€ (bei 10ct je kWh) bis 2400 (20ct je kWh).   
 
 ## Welchen U-Wert habe ich überhaupt?
-Hier wollen wir uns besonders mit dem U-Wert im Kontext der [Heizlastberechnung](/posts/2022-10-09-heizlastberechnung) beschäftigen. Insofern lautet die Frage ja erstmal: Welchen U-Wert muss ich für meine Außenwand angeben? Welchen für mein Dach? Aufschluss gibt oft erstmal die Bauakte. Hier ist festgehalten, mit welchen Materialien Wände und Decken errichtet wurden.
+Hier wollen wir uns besonders mit dem U-Wert im Kontext der [Heizlastberechnung](/posts/2022-10-29-heizlastberechnung) beschäftigen. Insofern lautet die Frage ja erstmal: Welchen U-Wert muss ich für meine Außenwand angeben? Welchen für mein Dach? Aufschluss gibt oft erstmal die Bauakte. Hier ist festgehalten, mit welchen Materialien Wände und Decken errichtet wurden.
 
-<figure>
+<figure style="font-size:small;width:600px;margin:auto">
   <img src="/images/heizlast/bauakte.png">
   <figcaption>Hier wurde mit Bimshohlblocksteinen gebaut</figcaption>
 </figure>
@@ -36,7 +35,7 @@ Hier wollen wir uns besonders mit dem U-Wert im Kontext der [Heizlastberechnung]
 ### Beispielwandaufbau im Netz
 Im einfachsten Fall findet ihr Informationen zu so einem Wandaufbau im Netz: So gibt es beispielsweise ein [Dokument des _energie institut hessen_ in dem "U-Werte typischer Außenwände"](https://cdn.website-editor.net/937ea8635222425aabf24e945f97dd23/files/uploaded/Artikel-Aussenwaende-1945-Sem_v1_V4WNWvfhScuPxU4FD8Aw.pdf) vorgestellt werden. Dort findet sich ein eigner Abschnitt "Außenwände aus Bimshohlblocksteinen 30cm". In einer detaillierten Tabelle wird genau ausgeführt, auf welchen U-Wert man üblicherweise kommt, werden zusätzlich Wärmeübergangswerte, Putzschichten etc bedacht. 
 
-<figure>
+<figure style="font-size:small;width:600px;margin:auto">
   <img src="/images/heizlast/wandaufbau.png">
   <figcaption>Wandaufbau einer Außenwand gemäß energie institut hessen</figcaption>
 </figure>
@@ -52,7 +51,7 @@ Wie berechnet man aber den U-Wert zweier verbundener Bauteile (Styropor + Wand)?
 ### Kompletten Wandaufbau selber berechnen
 Es gibt auch Tools im Netz die es erlauben, den kompletten Wandaufbau selber abzubilden. Mit beispielsweise [ubakus.de](https://ubakus.de) können bequem verschiedene Baustoffe wie Ziegel, Putz und Dämmung aus einem Katalog gewählt werden. 
 
-<figure>
+<figure style="font-size:small;width:600px;margin:auto">
   <img src="/images/heizlast/ubakus.png">
   <figcaption>Wandaufbau mit <i>ubakus.de</i>, 30cm Hohlblockstein + 10cm Styropor</figcaption>
 </figure>
@@ -62,7 +61,7 @@ Das Tool stellt den Wandaufbau schematisch dar, gibt den U-Wert aus und bietet d
 ### Energieberatung
 Wer ein Energiegutachten zu seinem Haus hat, kann dort ebenfalls relevante Informationen finden. Nicht immer wurde im Rahmen des Gutachtens zwangsläufig auch eine Heizlastberechnung vorgenommen; insofern kann es schon vorkommen, dass man ein entsprechendes Gutachten sein Eigen nennt - und dennoch auf die Freude einer eigenen Heizlastberechnung nicht verzichten muss.
 
-<figure>
+<figure style="font-size:small;width:600px;margin:auto">
   <img src="/images/heizlast/wandaufbau-gutachten.png">
   <figcaption>Wandaufbau in einem Gutachten</figcaption>
 </figure>
