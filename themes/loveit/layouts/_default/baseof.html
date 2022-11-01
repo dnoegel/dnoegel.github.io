@@ -9,10 +9,89 @@
         <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
         <link rel="stylesheet" href="/custom.css">
 
+        <style>
+            /**
+            MODAL
+             *//*
+
+
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1000; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            }
+
+            /* Modal Content (Image) */
+            .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+            }
+
+            /* Caption of Modal Image (Image Text) - Same Width as the Image */
+            #caption {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                text-align: center;
+                color: #ccc;
+                padding: 10px 0;
+                height: 150px;
+            }
+
+            /* Add Animation - Zoom in the Modal */
+            .modal-content, #caption {
+                animation-name: zoom;
+                animation-duration: 0.6s;
+            }
+
+            @keyframes zoom {
+                from {transform:scale(0)}
+                to {transform:scale(1)}
+            }
+
+            /* The Close Button */
+            .closeModal {
+                z-index: -99999;
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .closeModal:hover,
+            .closeModal:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            /* 100% Image Width on Smaller Screens */
+            @media only screen and (max-width: 700px){
+                .modal-content {
+                    width: 100%;
+                }
+            }</style>
+
         {{- partial "head/meta.html" . -}}
         {{- partial "head/link.html" . -}}
         {{- partial "head/seo.html" . -}}
 
+        {{ if not (in (printf "%#v" $.Site.BaseURL) "localhost") }}
         <script>
             (function(d, s, id, w, f){
                 w[f] = w[f] || function() {
@@ -31,10 +110,26 @@
             trackboxx('set', 'siteId', 'TB-60422104');
             trackboxx('trackPageview');
         </script>
+        {{ end }}
+
 
     </head>
     <body data-header-desktop="{{ .Site.Params.header.desktopMode }}" data-header-mobile="{{ .Site.Params.header.mobileMode }}">
-        {{- /* Check theme isDark before body rendering */ -}}
+
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="closeModal">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
+
+
+    {{- /* Check theme isDark before body rendering */ -}}
         {{- $theme := .Site.Params.defaulttheme -}}
         <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
@@ -66,4 +161,99 @@
         {{- /* Load JavaScript scripts and CSS */ -}}
         {{- partial "assets.html" . -}}
     </body>
+
+
+    <script>
+        document.getElementsByTagName("figure")
+        var list = document.getElementsByTagName("figure");
+        var modal = document.getElementById("myModal");
+        var captionText = document.getElementById("caption");
+        var modalImg = document.getElementById("img01");
+
+        var span = document.getElementsByClassName("closeModal")[0];
+        modal.isVisible = false;
+
+        var idx = -1;
+        for (let item of list ) {
+            idx++;
+
+            var img = item.getElementsByTagName("img")[0];
+            if (img === undefined) {
+                continue;
+            }
+            img.idx = idx;
+
+            var caption = item.getElementsByTagName("figcaption")[0];
+            if (caption !== undefined) {
+                img.alt = caption.innerText;
+            }
+
+            img.onclick = function() {
+                modalShow(this);
+            }
+        }
+
+        span.onclick = function() {
+            modalHide();
+        }
+        modal.onclick = function() {
+            modalHide();
+        }
+
+        function modalShow(img) {
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+            modal.imgIdx = img.idx;
+            modal.isVisible = true;
+        }
+
+        function modalHide() {
+            modal.style.display = "none";
+            modal.isVisible = false;
+        }
+
+        function showImage(idx) {
+            var item = list[idx];
+            var img = item.getElementsByTagName("img")[0];
+
+            if (img === undefined) {
+                return;
+            }
+
+            modalShow(img);
+        }
+
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            var isEscape, isLeft, isRight = false;
+
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+                isLeft = evt.key === "ArrowLeft";
+                isRight = evt.key === "ArrowRight";
+            } else {
+                isEscape = (evt.keyCode === 27);
+                isLeft = (evt.keyCode === 37);
+                isRight = (evt.keyCode === 39);
+            }
+
+            if (isEscape) {
+                modalHide();
+            }
+            if (modal.isVisible) {
+                if (isRight) {
+                    showImage(Math.min(modal.imgIdx+1, list.length-1));
+                }
+                if (isLeft) {
+                    showImage(Math.max(0, modal.imgIdx-1));
+                }
+            }
+
+        };
+
+
+
+    </script>
+
 </html>
