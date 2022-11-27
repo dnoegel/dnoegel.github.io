@@ -27,7 +27,7 @@ ausreichend - und in fast keinem Raum bei einer Vorlauftemperatur von 45°C.
 Da dies eine mehrteilige Reihe ist empfehle ich auch folgende Lektüre:
 - [**Heizlastberechnung - Teil 1: Heizlast eines Raumes und Hauses ermitteln**](/posts/2022-10-29-heizlastberechnung)
 - [Heizlastberechnung - Teil 2: U-Wert von Bauteilen ermitteln](/posts/2022-10-29-uwert-ermitteln)
-- [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts//2022-10-29-heizung)
+- [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts/2022-10-29-heizung)
 
 
 ## Ein Wort vorab
@@ -202,4 +202,4 @@ Den ersten Teil der Frage können wir bereits beantworten, durch die Heizlastber
    - …alle Fenster gegen dreifachverglaste austausche? => In der Berechnung der Transmissionswärmeverluste den U-Wert aller Fenster auf 0,9W/(m²*K) setzen. 
    - …die oberste Geschossdecke dämme? => In der Berechnung der Transmissionswärmeverluste den U-Wert für das Dach auf 0,14W/(m²*K) setzen.
 
-Für den zweiten Teil der Frage möchte ich noch herausfinden, ob die einzelnen Heizkörper ausreichend groß bemessen sind. Mehr dazu in [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts//2022-10-29-heizung)
+Für den zweiten Teil der Frage möchte ich noch herausfinden, ob die einzelnen Heizkörper ausreichend groß bemessen sind. Mehr dazu in [Heizlastberechnung - Teil 3: Eignen sich meine Heizkörper für eine Wärmepumpe?](/posts/2022-10-29-heizung)
