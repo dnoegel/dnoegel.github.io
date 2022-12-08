@@ -67,7 +67,17 @@ It could therefore also make sense to think twice about:
 
 
 ## The project
-The actual wiring is quite easy: The R503 just needs 3.3V from the ESP32 and ground for power supply. Additionally, I connected the yellow TXD Pin of the R503 to P17 Pin of the ESP32 and the brown (sometimes also green) RXD Pin of the R503 to the P16 Pin of the ESP32.
+The actual wiring is quite easy:
+
+| R503 Pin          | R503 Description | ESP 32 Pin |
+|:------------------|-----------------:|-----------:|
+| 1 (red)           | DC 3.3V          | 3.3V       |
+| 2 (black)         | Ground           | Ground     |
+| 3 (yellow)        | TXD, Output      | P17        |
+| 4 (brown or green) | RXD, Input       | P16        |
+
+
+The R503 just needs 3.3V from the ESP32 and ground for power supply. Additionally, I connected the yellow TXD Pin of the R503 to P17 Pin of the ESP32 and the brown (sometimes also green) RXD Pin of the R503 to the P16 Pin of the ESP32.
 
 Using the library manager of the Arduino IDE it is quite simple to use the [Adafruit Fingerprint Sensor Library](https://github.com/adafruit/Adafruit-Fingerprint-Sensor-Library/). It also includes a lot of examples for registering new fingerprints, checking fingerprints etc.
 
@@ -80,6 +90,6 @@ The main logic of this project so mainly is arranging this examples in a way tha
 </figure>
 
 
-The rest then again is simple: If the sensor sees a know finger, it will trigger an API Call that - you might guess it - will tell my Nuki bridge via HTTP to tell the Nuki door lock via Bluetooth to turn the key a few times. The door jumps open - and in walk 2 joyfully squealing kids with muddy boots and run with them through the house. With regard to my idea to let the kids in unguarded I just can say: Be careful what you wish for.
+The rest then again is simple: If the sensor sees a known finger, it will trigger an API Call that - you might guess it - will tell my Nuki bridge via HTTP to tell the Nuki door lock via Bluetooth to turn the key a few times. The door jumps open - and in walk 2 joyfully squealing kids with muddy boots and run with them through the house. With regard to my idea to let the kids in unguarded I just can say: Be careful what you wish for.
 
 As always the code can be found on [Github](https://github.com/dnoegel/fingerprint-doorlock).
