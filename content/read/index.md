@@ -11,7 +11,7 @@ draft: false
 Overview of the books I read/listened to since end of 2021.
 
 {{< admonition type=info title="Info" open=true >}}
-All links are Amazon affiliate links - this allows me to use the images below to depict the books.
+All links are Amazon affiliate links: This does not happen in the intention to make a profit - but allows me to use the images below to depict the books.
 {{< /admonition >}}
 
 <div class="gallery-grid book-gallery">
