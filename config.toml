@@ -25,6 +25,12 @@ css = ["style.css"]
     post = ""
     name = "About"
     url = "/about/"
+    [[menu.main]]
+    weight = 3
+    identifier = "read"
+    post = ""
+    name = "Reading"
+    url = "/read/"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

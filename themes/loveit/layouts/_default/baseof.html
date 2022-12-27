@@ -10,6 +10,14 @@
         <link rel="stylesheet" href="/custom.css">
 
         <style>
+
+            /**
+            Book cover
+             */
+            .book_cover img {
+                _height: 300px !important;
+            }
+
             /**
             MODAL
              *//*
@@ -186,6 +194,9 @@
             var caption = item.getElementsByTagName("figcaption")[0];
             if (caption !== undefined) {
                 img.alt = caption.innerText;
+            }
+            if (item.className === "book_cover") {
+                continue;
             }
 
             img.onclick = function() {
