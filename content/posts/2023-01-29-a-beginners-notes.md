@@ -1,144 +1,145 @@
-
-
 ---
-title: "Lohnt sich die Dämmung der obersten Geschossdecke?"
-date: 2023-01-06T18:48:00+02:00
+title: "A beginner's notes to 3d printing"
+date: 2023-01-29T18:48:00+02:00
 author: 'Daniel'
-lang: de
+lang: en
+draft: true
 ---
-Im Oktober 2022 habe ich die oberste Geschossdecke meines Walmdach-Bungalows gedämmt. Hier erfahrt ihr, was es gebracht hat - und was es alles so auszuwerten gibt.
-<!--more-->
+A year ago I bought my first 3D printer: An Artillery Genius Pro. Here you'll find some notes and thoughts about it. 
 
-## Stichprobe Oktober bis Dezember
-Seit 2019 protokolliere ich den Gasbedarf des Hauses auf Monatsbasis. Jetzt im Januar kann ich daher sinnvoll die Zeit Oktober-Dezember mit den Vorjahren vergleichen:
+## The printer
+3D printing is one of those hobbies that start before the actual hobby: I started looking around for a suitable printer almost a year before I did the purchase - read a lot of blog posts, reviews - and consumed way too much Youtube videos.
+I wanted to start with a simple beginner's model - that isn't too much fiddeling but still has a reasonable price point. I especially had a look at various Creality Ender printers and Artillery Sidewinders… but also checked out various delta printers and of course Prusa printers. 
 
-| Jahr | Gasbedarf ∑Oct-Dec |
-|------|-------------------:|
-| 2019 |            9324kWh |
-| 2020 |            9497kWh |
-| 2021 |            9350kWh |
-| 2022 |            4588kWh |
+At the end of the day I found that especially the Creality Ender model 3 seem to be more on the "fiddling" end of things - even though commonly used and recommended. But if you watched 20 videos of people explaining when which part of their Ender 3 broke, was replaced or showed serious wear… you have the feeling that it might not be the right choice for beginners. Even though I have to admit: The ender 3 is so popular - of course you will find most reports about problems for that printer. And you will also find most fixes and tips for that printer.
 
-Für die Jahre 2019-2021 ergibt sich ein Durchschnittswert von 9396kWh für die drei Monate. Die 4588kWh von 2022 sind damit 48,82% des Vorjahreswertes - oder eine Reduzierung von 51,12%. Dies übertrifft die Reduzierung von 30-40% aus meiner [Heizlastberechnung](/posts/2022-10-29-heizlastberechnung) deutlich.
+The Prusa was honestly a bit expensive for me - and at the same time I didn't want to spend 750€ on a printer that I still had to assemble - with the constant fear that some problem was related too my assembly. 
 
-## Ein detaillierterer Vergleich
-Um saisonale Effekte auszuschließen ("warmer Winter" / "kalter Winter"), können die Daten auch mit Bezug auf die Monatsdurchschnittstemperatur betrachtet werden.
-Hier zeigt sich, dass zwar der Oktober 2022 der wärmste Oktober meiner Aufzeichnungen ist - der November 2022 war aber ebenso warm wie der November 2020 und der Dezember 2022 sogar 1-2°C kälter als die Dezember der Vorjahre.
+I finally went with the Artillery Genius Pro - which was something like the smaller brother of the Sidewinder X2 for a reasonable price and with all the bells and whistles such as 230V bed (heated quickly), a filliament runout sensor and auto bed levelling.  
 
-Im Schnitt wurden jeden Monat 1500kWh weniger Heizwärme benötigt, die Visualisierung zeigt das auch sehr eindrücklich:
 
-<figure style="font-size:small;margin:auto">
-  <img src="/images/heizwerte/oct-dec.png">
-  <figcaption>Heizwärmebedarf Oct-Dec in den Jahren 2019-2022</figcaption>
+## Setting it up
+After assembling the printer one could have the expectation to directly start printing. That is not the case. Usually there are some steps involved earlier:
+
+* Levelling the bed manually
+* Running the automatic bed levelling
+* Adjusting the z-offset
+* Find the correct bed and nozzle temperature to print with
+
+This will usually allow you to print some of the demo prints that are shipped with most 3D printers on an SD card or USB stick. If you want to print something more useful right away, you will also need to find a slicer in order to prepare your 3D model for the print (i.e. slicing it). And if you want the prints to be accurate and within tolerance you might also need to calibrate _e-steps_, _flow_, _elephant footprint compensation_ or _horizontal expansion_ (depending on slicer and issue of your prints). 
+
+Actually there are a lot of guides online that will help you to understand, what the strange outcome of your print is called (e.g. "z wobble") and how to fix it. 
+
+- https://www.matterhackers.com/articles/3d-printer-troubleshooting-guide
+- https://www.3dsourced.com/rigid-ink/ultimate-3d-printing-troubleshooting-guide/
+- https://www.3dplatform.com/Blog/2020/July/Solutions-to-Common-Printing-Problems
+- https://bitfab.io/blog/3d-printing-problems/
+
+Please understand the following points as notes to future Daniel - if you spent some evenings to dial those values in you'll understand ;-).  
+
+### Bed levelling
+Bed levelling is the process of making sure that the bed is adjusted in a way that the nozzle of the 3D printer has the same distance to the bed without changing its position on the Z-axis. A bad levelling will result in a print being to narrow to the bed at some places - and being too far away in other places. And this again will usually result in bad first layers of the print and hence bad adhesion, ugly surfaces or failed prints. 
+
+For common cartesian printers there are 4 screws below the bed that will allow you to make sure, that the bed is level (by adjusting any of the 4 corners). Most probably you already have heard of the "paper method" where you adjust the bed in a way, that in each corner the nozzle is barely scratching a typical piece of paper. This way you make sure, that in each corner the distance between nozzle and bed is the same - and the bed is level.
+
+It is important to understand, though, that at this point the actual distance doesn't matter too much. If it is a paper or a penny between nozzle and bed doesn't make a big difference. Usually you would still make sure afterwards that the distance is perfect using e.g. _z-offset_.
+
+<div class="gallery-grid" style="float:left">
+<figure style="font-size:small;width:300px;">
+  <img src="/images/3d-print/bed-visualizer.png" style="">
+  <figcaption>The octoprint plugin "bed visualizer" allows you to see the ABL mesh</figcaption>
 </figure>
+</div>
 
-## Noch etwas mehr im Detail
-Durch den [smarten Gaszähler](/posts/2022-10-12-gaszaehler) kann die Auflösung der Analyse noch weiter erhöht werden. Die folgende Grafik zeigt die Tagesmitteltemperaturen und den Gasverbrauch des jeweiligen Tages. Zu erwarten wäre, dass der Gasverbrauch an kälteren Tagen höher ist als an warmen Tagen.
 
-<figure style="font-size:small;margin:auto">
-  <img src="/images/heizwerte/daily-view.png">
-  <figcaption>Gasverbrauch und Tagesmitteltemperatur</figcaption>
+After you leveled the bed manually you can use "auto bed levelling" (ABL, if your printer has that). With ABL your printer will automatically approach e.g. 16 different positions on the bed with the ABL probe. This way the printer has a model of the bed position by having very accurate measurements of those 16 positions. So the printer can calculate if the bed is level - and if not how the correction would look like. Obviously it would be very expensive and complex to automatically correct the physical location of the bed. Therefor ABL compensates for any offset in software - by adding or subtracting a certain Z-value to any z-position that the nozzle is trying to reach in future. This is also the reason why ABL doesn't really free you from manual leveling: You will still need to make sure that the bed is somewhat level - so ABL can do the rest. The benefit of ABL is, that it can compensate for minor errors in levelling - and also compensate physical deformations of the bed that couldn't be fixed with manual levelling.  
+
+### Z-Offset
+After all the levelling your bed should be in perfect shape. However: It is still undefined, how far your nozzle is actually away from the printer. This is even the case for ABL - as there is no information how long your nozzle is; or how much shorter your nozzle is than the ABL probe.
+
+The Z-Offset allows you to ensure that for Z=0 the nozzle has the perfect distance from the bed. What "perfect" means is something that is cause of a lot of drama in the internet. From my experience I usually have good results when ensuring that Z=0 is at a point where a thin paper strip matches between nozzle and bed. 
+
+The Z-Offset can usually be defined in your slicer or your 3D printer. I always configure it via printer:
+
+* Move the nozzle to Z=0 by pressing the corresponding button in your printer menu
+* After the nozzle moved to that position try to fit a thin paper strip between nozzle and bed
+* Adjust the nozzle distance pressing the Z+=0.025 or Z-=0.025 buttons on the printer until you can feel a little resistance on the paper strip when moving it back and forth
+* Save the new configuration to EEProm
+
+{{< admonition type=warning title="Warning" open=true >}}
+Attention: It cost me some evenings to find out that (when you are doing this over and over again) you actually need to make sure that the printer loads the changed value for Z-Index. This usually happens by homing the print head again - or running the g-code `G28 Z` in e.g. octoprint. Only after that it makes sense to check the position of Z=0 again.
+{{< /admonition >}}
+
+Once the z-offset is dialed in you can check your calibration by printing a 20x20 square (only one first layer). This is printed quite quickly - and allows you to check if your z-offset is too close (first layer squished into the bed) or too far (first layer not sticking or gaps between the lines). You can even print one of those 20x20 squares in every corner and in the middle of the bed to check the overall levelling of your bed. However, from my experience with manual levelling + ABL as described before usually it is sufficient to print one of those squares in the middle. Usually today I just watch the first layer of my prints very closely… and only repeat this while levelling process when I see issues with the first layer.  
+
+### E-Steps
+Another important calibration are the so called "e-steps". They define how many steps the extruder needs to move in order to extrude 1mm of filament. Wrong values might lead to under- or overextrusion. 
+
+<div class="gallery-grid" style="float:right;">
+<figure style="font-size:small;width:300px;">
+  <img src="/images/3d-print/e-steps.png" style="">
+  <figcaption>The command M503 shows the current e-step configuration</figcaption>
 </figure>
+</div>
 
-Dies ist grundsätzlich auch der Fall, die beiden Linien laufen einander entgegengesetzt. Es gibt allerdings auch Ausnahmen - so sind vom 05.11 auf den 07.11 Temperatur und Gasverbrauch angestiegen, ähnliches ist am 13.11. zu beobachten. Eine mögliche Erklärung könnte erhöhter Warmwasserverbrauch durch bspw. Baden sein - aber auch Tage an denen einzelne Räume höher geheizt wurden weil bspw. im Home Office gearbeitet wurde. Am 24.12 ist ferner zu sehen, dass trotz näherungsweise gleichbleibender Außentemperatur der Gasverbrauch erheblich gesunken ist - eventuell war an diesem Tag ausnahmsweise der Holzofen in Betrieb ;-).
+Usually e-steps are configured by adding a mark to the filament 120mm above the extruder. Now you extrude 100mm of filament, e.g. with the command `G1 E100 F100`. Now you measure how much filament was extruded by measuring the filament from the extruder to the mark you made earlier. If you measure 20mm the e-steps are dialed in perfectly (as we set the mark at 120mm and just extruded 100mm). 
 
-Auch wenn der Zusammenhang zwischen Außentemperatur und Gasbedarf letztlich offenkundig ist, zeigt die Grafik doch sehr plastisch, wie direkt dieser Zusammenhang letztlich auch ist - es gibt bspw. keine größeren Verzögerungen.
+In order to set the correct e-steps, proceed as follows:
 
-## Ein Heizwärme-Modell für mein Haus
-Mit diesem Wissen bietet es sich an, ein Modell zu entwerfen, das saisonale Effekte ausmittelt und mir auch in Zukunft verrät, mit welchem Heizwärmebedarf ein vergleichbarer Monat im ungedämmten Zustand zu Buche geschlagen hätte.
+- Read the current e-steps using the `M503` command. In my case: `e_steps = 509.15`
+- Measure the actually extruded filament: `120 - length_extruder_to_mark = extruded_mm`. In my case: `120 - 30 = 90`
+- Calculate the number of e-steps that would have resulted in the correct extrusion: `e_steps * 100 / extruded_mm = new_e_steps`. In my case `509,15*100/90 = 565,72`
+- Set the new e_steps with `M92 E565.72` and save with `M500`
 
-Unten stehende Grafik zeigt ein entsprechendes Modell:
-- In blauen Punkten ist der jeweilige Heizwärmebedarf im ungedämmten Zustand bei einer gegebenen Monatsdurchschnittstemperatur aufgezeigt
-- In roten Kreuzen ist der Heizwärmebedarf im gedämmten Zustand aufgezeigt
-- Die gepunkteten Linien stellen die dazugehörigen Regressionsmodelle dar
 
-<figure style="font-size:small;margin:auto">
-  <img src="/images/heizwerte/reg.png">
-  <figcaption>Heizwärmebedarf nach Monatsaußentemperatur</figcaption>
-</figure>
+### Flow
+Once we made sure that the extruder extrudes exactly the amount of filament requested by adjusting the e-steps, we can now fine tune how much filiament we want to extrude. The so-called "flow rate" is a multiplier that allows us to increase or decrease the amount of filament that is extruded per second while printing. 
 
-Auch in diesem Chart ist deutlich zu erkennen, dass der Heizwärmebedarf erheblich geringer ist. Je geringer die Außentemperatur, desto höher die Einsparung - die Graphen laufen erkennbar nach links auseinander.
+Typically, the calibrations happens by printing an empty 20x20 cube and measuring the wall thickness: If the walls are too thick, the flow rate is reduced; if the walls are too thin, the flow rate should be increased.
 
-**Erste Beobachtung:** Im Temperaturbereich 8°C aufwärts erscheinen die Unterschiede weniger deutlich - hier gibt es auch im ungedämmten Zustand einige Datenpunkte, die den gedämmten Werten sehr nahe kommen (bspw. bei 11,4°C). Warum ist das so? Tatsächlich gibt es hier eine kleine Besonderheit: Die blauen Datenpunkte die in diesem Temperaturbereich unterhalb der Trendlinie des ungedämmten Zustandes liegen (mit rotem Kreis markiert), stammen ausschließlich aus dem Frühjahr. Eine mögliche Erklärung wäre ein gewisser "Frühjahrseffekt", bei dem bei steigenden Temperaturen das Heizen schneller eingestellt wird, wohingegen im Herbst bei fallenden Temperaturen vielleicht schneller zum Thermostat gegriffen wird.
-Selbst wenn also scheinbar der Oktober-Wert des gedämmten Gebäudes nur unwesentlich geringer ist als einige Vorjahreswerte: Tatsächlich liegt der Oktober damit deutlich unter allen vergleichbaren Herbst- und Wintermonaten und gleichauf mit den Frühjahrsmonaten mit ihren eher geringen Heizwärmebedarfen bei gleicher Durchschnittsaußentemperatur.
+For more details and the comfortable online calculator visit https://3dprintbeginner.com/flow-rate-calibration/.
 
-**Zweite Beobachtung:** Ab etwa 14°C Monatsdurchschnittstemperatur scheint der Heizwärmebedarf sich bei um die 400kWh einzupegeln (blaues Oval). Da dieser Wert von 400kWh auch im Hochsommer nicht unterschritten wird, dürfte es sich hierbei um die zur Trinkwassererwärmung benötigte Energie handeln. Der Wert erscheint mir relativ hoch - das schaue ich mir bei Gelegenheit nochmal genauer an. An diesen Werten lässt sich gleichzeitig die Heizgrenztemperatur des Hauses gut ablesen: Ab diesen Temperaturen scheint ein Beheizen des Hauses nicht mehr nötig zu sein. Dies deckt sich auch mit den viel zitierten 15°C die für ältere Gebäude oft angegeben werden. Die folgenden Jahre werden zeigen, ob auch die Heizgrenztemperatur durch die Dämmung deutlich gesenkt werden kann.
+## Slicer
+In order to 3D print you will usually need a 3D model (often delivered in form of a .STL file) - and translate that into instructions for the 3D printer. This process is called "slicing" - the corresponding software is called "slicer". The software will "slice" the 3D model into individual layers and for each layer create instructions where the nozzle of the printer needs to go and how much filiament it should extrude.
 
-**Dritte Beobachtung:** Die Streuung der Datenpunkte beim ungedämmten Gebäude schlägt sich im Bestimmtheitsmaß R² nieder. Die Standardabweichung beträgt hier etwa 436kWh. Da die Stichprobe des gedämmten Gebäudes sehr gering ist, sieht das Bestimmtheitsmaß zwar besser aus - ist aber nicht aussagekräftig. Vergleicht man den Intercept der Regressionsmodelle, ist erkennbar, dass der Basisverbrauch des ungedämmten Gebäudes bei 1°C Durchschnittstemperatur 7546kWh beträgt - beim gedämmten Gebäude lediglich 4028kWh. Am Koeffizienten der Temperaturvariabel ist abzulesen, dass die Kurve insgesamt deutlich flacher verläuft (-2431ln(x) vs -1290ln(x)); Temperaturunterschiede wirken sich also auch deutlich weniger heftig aus.
-Beide Ergebnisse sind erwartbar - die beiden Regressionen im Vergleich zeigen aber wie sehr der Grundwärmebedarf (Intercept) und wie sehr die Temperaturabhängigkeit (Koeffizient der Variable X) gesunken sind.
-
-### Gibt es noch andere Faktoren?
-Tatsächlich habe ich auch untersucht, ob man durch Hinzunahme weiterer Variablen die Genauigkeit des Modells noch verbessern kann. Hierzu habe ich meine Daten durch  zusätzliche Wetterinformationen angereichert und die für mich eher uninteressanten Nicht-Heizmonate entfernt.
-
-|Monat| Mit. Temp | Min. Temp | Max. Temp | ml Regen | Max Regen | Sonnenstd. | Sommertage | Heiße Tage | Frosttage |Streng Frost|Eistage| kwh |
-|----|-----------|-----------|-----------|----------|-----------|------------|------------|------------|-----------|----|----|-----|
-|2021/12| 4,4       | -5,3      | 14,5      | 44       | 6,1       | 22,7       | 0          | 0          | 10        |0|2| 3929 |
-|2021/11| 6,3       | -2,4      | 13,5      | 22,9     | 7         | 44,3       | 0          | 0          | 6         |0|0| 3546 |
-|2021/10| 11,1      | 0,5       | 19,6      | 43,9     | 7,4       | 101,9      | 0          | 0          | 0         |0|0| 1874 |
-|2021/09| 15,8      | 5,3       | 28,6      | 36,9     | 25,2      | 165,6      | 3          | 0          | 0         |0|0| 862 |
-|2021/03| 6,1       | -5,6      | 24,5      | 41,7     | 7,7       | 129,6      | 0          | 0          | 9         |0|0| 3474 |
-|2021/02| 3         | -17,3     | 19,1      | 56,1     | 15,2      | 101,1      | 0          | 0          | 12        |6|7| 4140 |
-|2021/01| 2,5       | -5,3      | 12,4      | 72,3     | 11,8      | 28,7       | 0          | 0          | 14        |0|0| 4951 |
-|2020/12| 5,1       | -1,3      | 13,7      | 68,6     | 13,7      | 25         | 0          | 0          | 4         |0|0| 4103 |
-|2020/11| 7,9       | -5        | 19,9      | 39,9     | 8         | 91,1       | 0          | 0          | 5         |0|0| 3198 |
-|2020/10| 11,3      | 1,7       | 20,1      | 75,7     | 12,4      | 51,1       | 0          | 0          | 0         |0|0| 2194 |
-|2020/09| 14,9      | 5,1       | 31,5      | 38,2     | 21        | 192,2      | 5          | 1          | 0         |0|0| 862 |
-|2020/03| 6,7       | -5,2      | 16,6      | 50,4     | 7,3       | 173,1      | 0          | 0          | 9         |0|0| 3237 |
-|2020/02| 6,7       | -1,6      | 18,3      | 126,6    | 17,9      | 58,8       | 0          | 0          | 2         |0|0| 3721 |
-|2020/01| 5,2       | -5,2      | 13,4      | 26,1     | 3,9       | 30,4       | 0          | 0          | 8         |0|0| 3948 |
-|2019/12| 5,3       | -3,7      | 15,2      | 60,4     | 13,4      | 46,3       | 0          | 0          | 9         |0|0| 4107 |
-|2019/11| 5,6       | -2,4      | 15,9      | 76,5     | 29        | 45,1       | 0          | 0          | 6         |0|0| 3495 |
-|2019/10| 11,8      | -0,8      | 22,3      | 89,1     | 15,8      | 100,3      | 0          | 0          | 1         |0|0| 1722 |
-
-Die Regressionsanalyse in Excel liefert hierfür dieses Ergebnis:
+The output format of slicers is called "gcode" - this file format can be consumed by all modern consumer 3D printers. It usually looks something like this:
 
 ```
-SUMMARY OUTPUT								
-								
-Regression Statistics								
-Multiple R	        0,997754325							
-R Square	        0,995513693							
-Adjusted R Square	0,985643818							
-Standard Error	    143,8192371							
-Observations	    17							
-								
-ANOVA								
-	        df	SS	        MS	        F	        Significance F			
-Regression	11  22948918,91	2086265,356	100,8638601	3,84991E-05			
-Residual	5	103419,8648	20683,97296					
-Total	    16	23052338,78						
-								
-	            Coefficients    Standard Error  t Stat	        P-value	    Lower 95%       Upper 95%       Lower 95,0%	    Upper 95,0%     Irrelevant
-Intercept	    5628,775833     431,929748	    13,03169291	    4,74551E-05	4518,465069	    6739,086598	    4518,465069	    6739,086598
-X Variable 1	-315,6428902	46,90816553	    -6,728954046	0,001098815	-436,2241685    -195,061612	    -436,2241685	-195,061612
-X Variable 2	-16,98270191	47,23304287	    -0,359551299	0,733869319 -138,399104	    104,4337001	    -138,399104	    104,4337001     *
-X Variable 3	5,054510558	    20,18486151	    0,25041096	    0,812233556 -46,83232779	56,94134891	    -46,83232779	56,94134891     *
-X Variable 4	5,96373797	    2,22102151	    2,685132919	    0,043551615	0,25442042	    11,67305552	    0,25442042	    11,67305552     
-X Variable 5	-25,41915534	9,418446557	    -2,698869201	0,042841916	-49,63004298	-1,208267695	-49,63004298	-1,208267695
-X Variable 6	-3,336589275	1,517664226	    -2,198502949	0,079243164	-7,237869367	0,564690816	    -7,237869367	0,564690816     *
-X Variable 7	379,9350393     127,5589321	    2,978505957	    0,030852997 52,03436534	    707,8357132	    52,03436534	    707,8357132     **
-X Variable 8	-1087,763338	376,873756	    -2,886280407	0,03433546	-2056,548169	-118,9785062	-2056,548169	-118,9785062    **
-X Variable 9	-1,914166837	27,328716	    -0,070042326	0,946875044	-72,16486778	68,33653411	    -72,16486778	68,33653411     *
-X Variable 10	196,9525573	    119,8702816	    1,643047423	    0,161294834	-111,1838113	505,0889258	    -111,1838113	505,0889258     *
-X Variable 11	-243,0691089	86,93884987	    -2,795862946	0,038179595	-466,5525372	-19,58568062	-466,5525372	-19,58568062    **
+…
+G1 X102.092 Y110.276 E463.18115
+G1 X101.958 Y110.929 E463.20356
+G1 X101.721 Y111.587 E463.22708
+…
 ```
 
-Nun sieht der Wert für R² natürlich erstmal deutlich besser aus (99% im Vergleich zu den 91% zuvor). Hierzu gibt es aber einige Beobachtungen:
+Each line is an instruction, [`G1` is "linear move"](https://marlinfw.org/docs/gcode/G000-G001.html). The following parameters are the X and Y coordinate the print head should move to - and the amount of filament that should be extruded (more precise: how many e-steps the extruder should move). Of course there are [many other](https://marlinfw.org/docs/gcode/G000-G001.html) instructions as well, e.g. to set temperature, set speed etc. This way, line by line, layer by layer the 3D model is printed. 
 
-- Auch ohne Hinzunahme weiterer Variablen kann ich das Modell auf einen R-Wert von 93% bringen, wenn ich die Nicht-Heizmonate entferne.
-- Üblicherweise werden Variablen mit einem P-Wert > 0,05 als nicht signifikant angesehen (oben mit * markiert). Da ein Modell mit vielen unnützen, schwer zu messenden Variablen natürlich wenig hilfreich ist, sollte diese Variablen entfernt werden
-- Einige weitere Variablen wie "Sommertage", "Heiße Tage", "Eistage" haben zwar einen besseren P-Wert - sind aber mit so wenig Datenpunkten versehen, dass hier eine Überanpassung des Modells zu befürchten ist (oben mit ** markiert).
-- Nimmt man all diese Variablen aus der Berechnung heraus, bleiben noch "ml Regen" und "Max Regen" übrig, das Modell hat aber "nur" noch einen R²-Wert von 97% (und zeigt für die beiden Regen-Variablen ebenfalls einen zu hohen P-Wert an). 4 Prozentpunkte mehr Genauigkeit im Vergleich zu dem um Sommertage bereinigten, allein auf Durchschnittstemperatur basierten Modell? Das ist den Aufwand nicht wert!
+A small 3D print might easily have 10.000 of those instructions, more complex and bigger once even more.  
 
-### Was bringt mir das?
-Grundsätzlich handelt es sich hierbei natürlich um eine Spielerei: Wieviel die Dämmung einspart sehe ich am Monatsende am Gaszähler und dass bei niedrigen Temperaturen mehr geheizt werden muss als bei hohen dürfte dem kundigen Beobachter auch vorher schon bewusst gewesen sein.
+Common slicers are:
 
-Dennoch erlaubt mir das Regressionsmodell dem aktuellen Heizwärmebedarf im gedämmten Zustand eine (halbwegs) belastbare, konkrete Zahl gegenüberzustellen, die ich sonst ggf. nicht hätte. So war beispielsweise der Dezember bis kurz vor Weihnachten außergewöhnlich kalt: Statt der sonst üblichen 3,5°C im Monatsmittel hatten wir zwischenzeitlich Durchschnittstemperaturen von unter 2°C. Das hätte im ungedämmten Zustand (nach dem Modell) zu 5867kWh Heizwärmebedarf geführt - und damit nochmal 1000kWh mehr als im bisher kältesten Monat meiner Aufzeichnungen.
+- [Slic3r](https://slic3r.org/)
+- [Prusaslicer](https://www.prusa3d.com/de/page/prusaslicer_424/)
+- [UltiMaker Cura](https://ultimaker.com/de/software/ultimaker-cura)
+
+Personally I used Prusaslicer a lot as I liked the way it handles presets and configurations - but also Cura is a very popular choice and has a wide range of plugins in the market place that is powered by the community. For each of the slicers I'd recommend: Especially at the beginning try to stick with the "beginner" configuration set and don't change to many settings at once: It is very easy to mess up the configuration - but very hard to find out, what setting exactly now results in poor prints, especially if you perhaps configured that setting weeks or month ago.
 
 
-## Fazit: Dämmung
-Wie schon eingangs erwähnt sieht es derzeit danach aus, dass die Dämmung eine Einsparung von etwa 52% im Vergleich zum Vorjahr ermöglicht. Gerade auch im anfänglich sehr kalten Dezember hat sich das bestätigt. Gleichzeitig ist anzunehmen, dass der Wert noch etwas sinkt - da in den Sommermonaten ausschließlich der Warmwasserverbrauch zu Buche schlägt - der durch die Dämmung natürlich nicht beeinflusst wird.
-Die Dämmung der obersten Geschossdecke dürfte sich bei Gaspreisen von derzeit 0,12ct/kWh nichtsdestotrotz nach knapp 5 Jahren amortisieren. 
 
+## Octoprint
+
+### Plugins
+
+#### Octolaps
+#### Print time genius
+#### Preheat button
+#### Telegram
+#### Slicer Thumbnails
+
+## CAD
+
+## Getting 3D printable files
+
+## Prints
 
 
