@@ -1,8 +1,8 @@
 
 
 ---
-title: "Monitoring the flow and return temperature of my heating system"
-date: 2023-04-22T18:48:00+02:00
+title: "Things I measure in my smart honme"
+date: 2023-04-28T18:48:00+02:00
 author: 'Daniel'
 lang: en
 ---
@@ -86,15 +86,9 @@ Looking at a day in april, it can be well seen, that over night the burner did n
 <div class="gallery-grid" style="">
 <figure style="font-size:small;margin:auto">
   <img src="/images/flow-return-monitor/flow-return-march.png">
-  <figcaption>Flow and return temperatures of a day in march (4°C average temperature that day)</figcaption>
-</figure>
-
-<figure style="font-size:small;margin:auto">
-  <img src="/images/flow-return-monitor/excess-heat.png">
-  <figcaption>In may heating was off. Excess heat from service water (e.g. from showering) increases the return temperature, however.</figcaption>
+  <figcaption>Flow and return temperatures of a day in march (4°C average temperature that day</figcaption>
 </figure>
 </div>
-
 
 For a colder day in march, the picture is quite different: Not only did the burner run over night a few times - there a substantially more burner runs (i.e. strong reheatings of the flow temperature) throughout the day. From my understanding this is a result of the old gas burner being a bit to big for the house, especially due to window changes and insulation of walls and roof. 
 
