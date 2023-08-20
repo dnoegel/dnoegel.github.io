@@ -16,9 +16,31 @@ All links are Amazon affiliate links: This does not happen in the intention to m
 
 <div class="gallery-grid book-gallery">
 
+<figure class="book_cover" style=font-size:small;">
+<span class="reading_badge" style="">Reading</span>
+<!-- Understanding Deep Learning -->
+<a href="https://udlbook.github.io/udlbook/"><img src="https://raw.githubusercontent.com/udlbook/udlbook/main/UDLCoverSmall.jpg"></a>
+<figcaption>Comprehensive introduction into deep learning, especially the fundamental concepts of it. 
 
-<figure class="book_cover" style=font-size:small;display:none!important;">
-<span class="reading_badge" style="display:none">Reading</span>
+<span style="font-size:8pt">Book can be found <a href="http://udlbook.com">at udlbook.com</a> under Creative Commons License CC-BY-NC-ND.</span>
+
+<pre style="background-color: #333!important;overflow: hidden;font-size:8pt">
+@book{prince2023understanding,
+  author = "Simon J.D. Prince",
+  title = "Understanding Deep Learning",
+  publisher = "MIT Press",
+  year = 2023,
+  url = "http://udlbook.com"
+}
+</pre>
+
+
+</figcaption>
+</figure>
+
+
+
+<figure class="book_cover" style=font-size:small;">
 <!-- 101 Things I learned at Architecture Schooll -->
 <a href="https://www.amazon.de/101-Things-Learned-Architecture-School/dp/0262062666?crid=2CZRS5GWHXF0G&keywords=101+things+i+learned+in+architecture+school&qid=1672142537&sprefix=101+thin%2Caps%2C79&sr=8-1&linkCode=li3&tag=noegel-21&linkId=49d00c78e78f63d8d0a52f4df5205b1c&language=de_DE&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=0262062666&Format=_SL650_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=noegel-21&language=de_DE"></a>
 <figcaption>A book about the fundamental principles of architecture, organized into short, easy-to-digest lessons. Three key learnings are:
