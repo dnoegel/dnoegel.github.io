@@ -45,9 +45,9 @@ For the permanent circuit I am using another one of my trusted ESP 32, a BPW 40 
 |:------------|:----------|----------:|-------:|--------------------------------------------------------------------------------------------------------|
 | BPW 40      | Emitter   |     ESP32 |     34 |                                                                                                        |
 | BPW 40      | Collector |     ESP32 | Ground |                                                                                                        |
-| ESP32       | 34        |     ESP32 |  V 3.3 | Pull up pin 34 with 100kΩ resistor. The higher the resistor, the more sensitive the phototransistor is |
+| ESP32       | 34        |     ESP32 |  3.3 V | Pull up pin 34 with 100kΩ resistor. The higher the resistor, the more sensitive the phototransistor is |
 | KY-005      | Minus     |     ESP32 | Ground |                                                                                                        |
-| KY-005      | Vdd       |     ESP32 |  V 3.3 |                                                                                                        |
+| KY-005      | Vdd       |     ESP32 |    5 V |                                                                                                        |
 | KY-005      | Data      |     ESP32 |     32 |                                                                                                        |
 
 ## The sketch
