@@ -18,7 +18,7 @@ So the idea is (a) to read the IR signals for on/off from the original remote - 
 Additionally, (c) a photo transistor is used to detect if the AC is on or not. The transistor is taped to one of the LEDs on the AC - so whenever the photo transistor detects some light I can assume that the AC is active. This is especially useful as the ON and the OFF signal of the remote are the same - so would be hard to determine automatically if the AC is currently running or not. 
 
 ## The circuit(s)
-Actually there are two circuits: One for reading the original IR signal initially and another permanent one to "make the AC smart". The circuit described below focuses on the latter. For reading the IR signal you can easily check out the github repository linked below - or just open `IRemote->SimpleReceiver` from the example section in your arduino IDE.   
+Actually there are two circuits: One for reading the original IR signal initially and another permanent one to "make the AC smart". The circuit described below focuses on the latter. For reading the IR signal you can just open `IRremote->SimpleReceiver` from the example section in your arduino IDE or check it [here](https://github.com/Arduino-IRremote/Arduino-IRremote/blob/master/examples/SimpleReceiver/SimpleReceiver.ino).   
 
 For the permanent circuit I am using another one of my trusted ESP 32, a BPW 40 NPN photo transistor and a KY-005 IR emitter. Furthermore, a
 100kΩ resistor is used to pull up the data pin which is connected to the BPW 40 emitter. 
@@ -51,7 +51,7 @@ For the permanent circuit I am using another one of my trusted ESP 32, a BPW 40 
 | KY-005      | Data      |     ESP32 |     32 |                                                                                                        |
 
 ## The sketch
-The sketch uses the `IRemote` library to read/send IR signals and `PubSubClient` to receive and publish messages via MQTT.
+The sketch uses the `IRremote` library to send IR signals and `PubSubClient` to receive and publish messages via MQTT.
 
 ```c
 #include <IRremote.hpp>
@@ -66,12 +66,17 @@ bool acActive = false;
 
 void loop()
 {
-  handleRead();
   checkACActive();
   
   delay(200);
 }
 
+
+/**
+ * Every loop: Read the photo transistor
+ * If the returned value is within a certain threshold, the AC is active
+ * If the status changed: send corresponding MQTT event 
+ */
 void checkACActive()
 {
   int photodiodeValue = analogRead(PHOTO_DIODE_PIN);
@@ -84,6 +89,10 @@ void checkACActive()
   }
 }
 
+/**
+ * Called by the MQTT callback function when a certain message is received
+ * Check full Github repo for details
+ */
 void sendOff()
 {
   checkACActive();
@@ -96,6 +105,10 @@ void sendOff()
   IrSender.sendNEC(0x80, 0x9C, 3);
 }
 
+/**
+ * Called by the MQTT callback function when a certain message is received
+ * Check full Github repo for details
+ */
 void sendOn()
 {
   checkACActive();
@@ -107,19 +120,6 @@ void sendOn()
   client.publish("mqtt.0.climateremote.message", "ON");
   IrSender.sendNEC(0x80, 0x9C, 3);
 }
-
-
-void handleRead()
-{
-  if (IrReceiver.decode()) {
-    Serial.println(IrReceiver.decodedIRData.decodedRawData, HEX); // Print "old" raw data
-
-    IrReceiver.printIRResultShort(&Serial); // Print complete received data in one line
-    IrReceiver.printIRSendUsage(&Serial);   // Print the statement required to send this data
-
-    IrReceiver.resume();
-  }
-
 }
 ```
 The functions `sendOff` and `sendOn` are called by the MQTT callback function whenever a certain message arrives for a certain topic. For the full sketch including web updater, wifi setup etc. visit the [ClimateRemote](https://github.com/dnoegel/ClimateRemote) repository.
