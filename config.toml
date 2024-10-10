@@ -25,7 +25,9 @@ css = ["style.css"]
     post = ""
     name = "About"
     url = "/about/"
-    [[menu.main]]
+
+[old]
+    [[oldmenu.main]]
     weight = 3
     identifier = "read"
     post = ""

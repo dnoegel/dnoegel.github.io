@@ -6,7 +6,7 @@ date: 2023-01-06T18:48:00+02:00
 author: 'Daniel'
 lang: de
 ---
-Im Oktober 2022 habe ich die oberste Geschossdecke meines Walmdach-Bungalows gedämmt. Hier erfahrt ihr, was es gebracht hat - und was es alles so auszuwerten gibt.
+Seit Oktober 2022 habe ich die oberste Geschossdecke meines Walmdach-Bungalows gedämmt. Hier erfahrt ihr, was es gebracht hat - und was es alles so auszuwerten gibt.
 <!--more-->
 
 ## Stichprobe Oktober bis Dezember
