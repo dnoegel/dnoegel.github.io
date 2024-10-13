@@ -67,7 +67,7 @@ Eine andere Möglichkeit, die Lautstärke zu mindern, besteht darin, die Lüfter
 <div class="gallery-grid" style="width:400px;float:right">
 <figure style="font-size:small;margin:auto">
   <img src="/images/radiator_booster/without.png">
-  <figcaption>Heizen in meinem Büro ohne Heizkörperverstärker</figcaption>
+  <figcaption>Heizen in meinem Büro ohne Heizkörperverstärker (bis 16 Uhr)</figcaption>
 </figure>
 </div>
 
@@ -77,7 +77,7 @@ Auch vergleichbare Testkonditionen sind nicht ganz einfach: Sind es draußen 5°
 <div class="gallery-grid" style="width:400px;float:right">
 <figure style="font-size:small;margin:auto">
   <img src="/images/radiator_booster/with.png">
-  <figcaption>Heizen in meinem Büro mit Heizkörperverstärker</figcaption>
+  <figcaption>Heizen in meinem Büro mit Heizkörperverstärker (bis 14 Uhr)</figcaption>
 </figure>
 </div>
 
