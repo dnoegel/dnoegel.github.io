@@ -8,6 +8,9 @@ theme = 'loveit'
 
 [params]
 title = "Daniel Nögel"
+
+[params.page]
+lightgallery = true
 description = ""
 css = ["style.css"]
 
@@ -58,7 +61,7 @@ Twitter = "danielnoegel"
   logo = ""
   name = "noegel.io"
   # you can add extra information before the name (HTML format is supported), such as icons
-  _pre = "<img style='height:32px;margin-right:10px;border-radius:32px;vertical-align:middle' src='https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4'"
+  _pre = "<img style='height:32px;margin-right:10px;border-radius:32px;vertical-align:middle' src='/images/dn.png'"
   pre = ""
   # you can add extra information after the name (HTML format is supported), such as icons
   post = ""
@@ -81,7 +84,7 @@ title = "Daniel Nögel"
 [params.home]
 [params.home.profile]
   enable = true
-  avatarURL = "https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4"
+  avatarURL = "/images/dn.png"
   title = ""
   subtitle = "Things I learned"
   typeit = false
