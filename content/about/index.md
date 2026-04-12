@@ -1,8 +1,8 @@
 ---
 title: "About"
 date: 2022-10-09T15:29:30+02:00
+language: en
 draft: false
-lang: en
 ---
 
 <img align="left" style="margin-right: 30px;width:200px;border-radius:200px" src="https://media-exp1.licdn.com/dms/image/C4D03AQGuXJAByMQYTw/profile-displayphoto-shrink_800_800/0/1642438088940?e=2147483647&v=beta&t=8qxFVbmgM_IDdU5Zdb5NaFeITv4sCISVGy-RdCoE_b4"> Moin 👋,<br>

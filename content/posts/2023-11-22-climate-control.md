@@ -1,10 +1,10 @@
 
 
 ---
+language: en
 title: "How to make an AC smart"
 date: 2023-11-22T20:02:00+02:00
 author: 'Daniel'
-lang: en
 ---
 I have a room that - in winter - needs some heating. Instead of connecting it to my central heating system,
 I decided to use my mobile AC which can also heat.  

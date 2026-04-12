@@ -49,6 +49,10 @@ css = ["style.css"]
 
 
 
+[params.author]
+name = "Daniel Nögel"
+link = "/"
+
 [params.social]
 GitHub = "dnoegel"
 Linkedin = "daniel-n%C3%B6gel-b14a5bb2/"

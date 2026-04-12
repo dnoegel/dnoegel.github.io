@@ -4,7 +4,7 @@
 title: "What to measure in a smart home"
 date: 2023-12-04T22:02:00+02:00
 author: 'Daniel'
-lang: en
+language: en
 draft: false
 ---
 Measuring data in your home can become somewhat addicting: How much energy did my solar plant generate? How much gas did my heating system use? How is the humidity in my rooms?

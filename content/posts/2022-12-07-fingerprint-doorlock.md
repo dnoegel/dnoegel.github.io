@@ -1,9 +1,10 @@
 ---
+language: en
 title: "Opening my front door with a fingerprint sensor"
 date: 2022-12-07T21:11:03+01:00
 author: 'Daniel'
-lang: en
 ---
+language: en
 
 In this simple project I want to build a box that allows my children to enter the house with a fingerprint sensor. At the same time this project doubles as a prototype for video doorbell with fingerprint sensor that I might want to build later.
 

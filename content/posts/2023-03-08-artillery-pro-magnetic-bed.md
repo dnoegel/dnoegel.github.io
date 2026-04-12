@@ -1,10 +1,10 @@
 
 
 ---
+language: de
 title: "Upgrading an Artillery Genius Pro with a spring steel sheet with PEI surface"
 date: 2023-03-08T18:48:00+02:00
 author: 'Daniel'
-lang: de
 ---
 After accidentally ruining the glas bed of my Artillery Genius Pro I decided to install a spring steel sheet with PEI surface. 
 <!--more-->

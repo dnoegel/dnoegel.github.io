@@ -1,9 +1,10 @@
 ---
+language: en
 title: "Replace Genius Pro Extruder"
 date: 2022-11-05T11:12:03+01:00
 author: 'Daniel'
-lang: en
 ---
+language: en
 I broke the hotend of my Genius Pro - and decided to exchange the entire extruder with the "all metal" one. This is a short overview.
 
 

@@ -1,10 +1,10 @@
 
 
 ---
+language: en
 title: "Monitoring the flow and return temperature of my heating system"
 date: 2023-04-22T18:48:00+02:00
 author: 'Daniel'
-lang: en
 ---
 To better understand the efficiency and behaviour of my old gas heater, I created a simple monitor for flow and return temperatures.  
 <!--more-->

@@ -1,9 +1,10 @@
 ---
+language: en
 title: "Update ESP32 over the air"
 date: 2022-11-01T09:46:37+01:00
 author: 'Daniel'
-lang: en
 ---
+language: en
 
 Developing Arduino boards is actually easier than one might think. You plug the development board onto your computer's USB, fire up Arduino IDE, and with just a few key strokes and clicks you can upload a first sketch to your development board. But what do you do if you just finished a more complex project and your development board is hard to reach in a door bell, water tank or robot you built?
 

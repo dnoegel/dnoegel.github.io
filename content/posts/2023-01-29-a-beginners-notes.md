@@ -2,7 +2,7 @@
 title: "A beginner's notes to 3d printing"
 date: 2023-01-29T18:48:00+02:00
 author: 'Daniel'
-lang: en
+language: en
 draft: true
 ---
 A year ago I bought my first 3D printer: An Artillery Genius Pro. Here you'll find some notes and thoughts about it. 

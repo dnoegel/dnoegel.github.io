@@ -4,7 +4,7 @@
 title: "Heizkörperverstärker"
 date: 2024-10-10T19:02:00+02:00
 author: 'Daniel'
-lang: de
+language: de
 draft: false
 keywords: 'W1209, Thermostat, Temperatursensor ,Heizkörperverstärker, radiator booster, radiator amplifier'
 ---
