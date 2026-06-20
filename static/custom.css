@@ -139,3 +139,6 @@ MODAL
         width: 100%;
     }
 }
+/* Project archive — embedded full-bleed under the site header */
+.archive-embed{position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw}
+.archive-embed iframe{display:block;width:100%;height:calc(100vh - 8rem);min-height:620px;border:0;background:#0a0b10}

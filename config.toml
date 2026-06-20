@@ -28,6 +28,12 @@ css = ["style.css"]
     post = ""
     name = "About"
     url = "/about/"
+    [[menu.main]]
+    weight = 3
+    identifier = "projects"
+    post = ""
+    name = "Projects"
+    url = "/projects/"
 
 [old]
     [[oldmenu.main]]
