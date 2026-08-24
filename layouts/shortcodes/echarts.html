@@ -1,0 +1,60 @@
+{{- /* Self-contained ECharts shortcode, overriding themes/loveit's version.
+
+    The theme's shortcode only emits a <div> and registers itself via
+    .Scratch, expecting partials/assets.html to load the library and inject
+    the chart data. That handshake breaks on this site: the JSON output
+    (lunr search index) renders .Content first, partials/init.html then
+    resets the scratch, and the HTML build reuses the cached .Content
+    without re-running the shortcode. The flag is gone, so no library and
+    no data ever reach the page.
+
+    This version ships the library reference and the option object inline,
+    so it does not depend on render order. Dark mode is handled by watching
+    the theme attribute the LoveIt theme switcher sets on <body>.
+*/ -}}
+{{- $option := .Inner | transform.Unmarshal | jsonify -}}
+{{- $height := cond .IsNamedParams (.Get "height") (.Get 0) | default "32rem" -}}
+{{- $id := printf "echarts-%v-%v" (substr (md5 .Page.RelPermalink) 0 8) .Ordinal -}}
+{{- $lightTheme := resources.Get "lib/echarts/theme/light.yml" | transform.Unmarshal | jsonify -}}
+{{- $darkTheme := resources.Get "lib/echarts/theme/dark.yml" | transform.Unmarshal | jsonify -}}
+{{- $lib := resources.Get "lib/echarts/echarts.min.js" -}}
+{{- if not ($.Page.Store.Get "echartsLibLoaded") -}}
+    {{- $.Page.Store.Set "echartsLibLoaded" true -}}
+    <script id="echarts-lib" src="{{ $lib.RelPermalink }}" defer></script>
+{{- end -}}
+
+<div id="{{ $id }}" class="echarts-chart" style="width: 100%; height: {{ $height }}; margin: 1.5rem 0;"></div>
+<script>
+(function () {
+    var id = {{ $id }};
+    var option = {{ $option | safeJS }};
+    var chart = null;
+
+    function draw() {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (chart) chart.dispose();
+        var dark = document.body.getAttribute('theme') === 'dark';
+        chart = echarts.init(el, dark ? 'loveit-dark' : 'loveit-light', { renderer: 'canvas' });
+        chart.setOption(option);
+    }
+
+    function boot() {
+        if (!window._echartsThemesDone) {
+            echarts.registerTheme('loveit-light', {{ $lightTheme | safeJS }});
+            echarts.registerTheme('loveit-dark', {{ $darkTheme | safeJS }});
+            window._echartsThemesDone = true;
+        }
+        draw();
+        window.addEventListener('resize', function () { chart && chart.resize(); });
+        new MutationObserver(function (records) {
+            for (var i = 0; i < records.length; i++) {
+                if (records[i].attributeName === 'theme') { draw(); return; }
+            }
+        }).observe(document.body, { attributes: true });
+    }
+
+    if (window.echarts) boot();
+    else window.addEventListener('DOMContentLoaded', boot);
+})();
+</script>
