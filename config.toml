@@ -35,14 +35,6 @@ css = ["style.css"]
     name = "Time capsule"
     url = "/projects/"
 
-[old]
-    [[oldmenu.main]]
-    weight = 3
-    identifier = "read"
-    post = ""
-    name = "Reading"
-    url = "/read/"
-
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
