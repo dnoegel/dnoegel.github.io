@@ -8,11 +8,15 @@ theme = 'loveit'
 
 [params]
 title = "Daniel Nögel"
+description = "Daniel Nögel - Things I learned"
 
 [params.page]
 lightgallery = true
 description = ""
 css = ["style.css"]
+
+[params.page.seo.publisher]
+name = "Daniel Nögel"
 
 
 [menu]
